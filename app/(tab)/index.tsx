@@ -1,25 +1,24 @@
 
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+
+import ImageViewer from "../components/ImageViewer";
+const PlaceholderImage=require("@/assets/images/bg.jpg");
 export default function Index() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>My First App</Text>
+      <View style={styles.imageContainer}>
+        <ImageViewer imgSource={PlaceholderImage}/>
+      </View>
     </View>
   );
 }
 const styles=StyleSheet.create({
     container:{
       flex:1,
-      justifyContent:"center",
       alignItems:"center",
-      backgroundColor:"#25292eff"
+      backgroundColor:"#25292eff",
     },
-    text:{
-      color:"white"
+    imageContainer:{
+      flex:1,
     },
-    button:{
-      textDecorationLine:"underline",
-      fontSize:20,
-      color:"#fff"
-    }
   })
