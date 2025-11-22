@@ -17,9 +17,10 @@ export default function EmojiPicker({isVisible,children,onClose}:Props) {
                         <MaterialIcons name='close' color={"#fff"} size={22}></MaterialIcons>
                     </Pressable>
                 </View>
+                {children}
             </View>
         </Modal>
-        {children}
+        
     </View>
   )
 }
@@ -27,7 +28,7 @@ const styles=StyleSheet.create({
     modalContent:{
         height:"25%",
         width:"100%",
-        backgroundColor:"#25292e",
+        backgroundColor:"#979797ff",
         borderTopLeftRadius:18,
         borderTopRightRadius:18,
         position:"absolute",
@@ -35,7 +36,7 @@ const styles=StyleSheet.create({
     },
     titleContainer:{
         height:"16%",
-        backgroundColor:"#464C55",
+        backgroundColor:"#8e8f92ff",
         borderTopLeftRadius:10,
         borderTopRightRadius:10,
         paddingHorizontal:20,
