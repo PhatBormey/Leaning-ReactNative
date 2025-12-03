@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 import { ImageSourcePropType, StyleSheet, View } from "react-native";
 import Button from "../components/Button";
 import ImageViewer from "../components/ImageViewer";
@@ -10,7 +8,7 @@ import IconButton from "../components/IconButton";
 import EmojiPicker from "../components/EmojiPicker";
 import EmojiList from "../components/EmojiList";
 import EmojiSticker from "../components/EmojiSticker";
-
+import {GestureHandlerRootView} from "react-native-gesture-handler";
 const PlaceholderImage=require("@/assets/images/bg.jpg");
 
 export default function Index() {
@@ -35,7 +33,7 @@ export default function Index() {
   const onModalClose=()=>setIsModalVisible(false);
   const onSaveImageAsync=async()=>{};
   return (
-    <View style={styles.container}>
+    <GestureHandlerRootView style={styles.container}>
       <View style={styles.imageContainer}>
         <ImageViewer imgSource={PlaceholderImage} selectedImage={selectedImage}/>
         {pickedEmoji && <EmojiSticker imageSize={40} stickerSource={pickedEmoji}/>}
@@ -59,7 +57,7 @@ export default function Index() {
       <EmojiPicker isVisible={isModalVisible} onClose={onModalClose} >
         <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose}/>
       </EmojiPicker>
-    </View>
+    </GestureHandlerRootView>
   );
 }
 const styles=StyleSheet.create({
