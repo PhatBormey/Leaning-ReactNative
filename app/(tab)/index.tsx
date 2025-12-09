@@ -1,9 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+import * as ImagePicker from "expo-image-picker";
+import * as MediaLibrary from "expo-media-library";
+import { useEffect, useRef, useState } from "react";
 import { ImageSourcePropType, StyleSheet, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { captureRef } from "react-native-view-shot";
-import * as ImagePicker from "expo-image-picker";
-import * as MediaLibrary from "expo-media-library";
 import Button from "../components/Button";
 import CircleButton from "../components/CircleButton";
 import EmojiList from "../components/EmojiList";
@@ -16,11 +16,6 @@ const PlaceholderImage = require("@/assets/images/bg.jpg");
 
 export default function Index() {
   const [permissionResponse, requestPermission] = MediaLibrary.usePermissions();
-  useEffect(() => {
-    if (!permissionResponse?.granted) {
-      requestPermission();
-    }
-  });
   const imageRef = useRef<View>(null);
   const [selectedImage, setSelectedImage] = useState<string | undefined>(
     undefined
@@ -30,7 +25,11 @@ export default function Index() {
   const [pickedEmoji, setPickedEmoji] = useState<
     ImageSourcePropType | undefined
   >(undefined);
-
+ useEffect(() => {
+    if (!permissionResponse?.granted) {
+      requestPermission();
+    }
+  },[]);
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ["images"],
@@ -64,7 +63,7 @@ export default function Index() {
       console.log(e);
     }
   };
-
+ 
   return (
     <GestureHandlerRootView style={styles.container}>
       <View style={styles.imageContainer}>
